@@ -1,8 +1,10 @@
-import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {ITodo} from "../../types/todo.ts";
 import {getOne} from "../../api/todoAPI.ts";
 import LoadingComponent from "../common/LoadingComponent.tsx";
+import useCustomMove from "../../hooks/useCustomMove.ts";
+import useCustomML from "../../hooks/useCustomML.ts";
 
 const initialState:ITodo = {
     mno:0,
@@ -16,18 +18,10 @@ function TodoReadComponent() {
     const {mno} = useParams()
 
     const [todo, setTodo] = useState(initialState)
-    const [loading, setLoading] = useState(false)
+    const {loading, setLoading} = useCustomML()
 
-    const location = useLocation()
-    const navigate = useNavigate()
-    const queryString = location.search
+    const {moveToModify, moveToList} = useCustomMove(Number(mno))
 
-    const moveToList = () => {
-        navigate({pathname:'/todo/list', search:`${queryString}`})
-    }
-    const moveToModify = () => {
-            navigate({pathname:`/todo/modify/${mno}`, search:`${queryString}`})
-    }
 
     useEffect(() => {
         const mnoNum = Number(mno)
