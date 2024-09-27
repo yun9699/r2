@@ -1,12 +1,11 @@
 import BasicLayout from "../layouts/BasicLayout.tsx";
+
 import {useCallback} from "react";
-import useCounts from "../hooks/useCounts.ts";
+import useCount from "../hooks/useCount.ts";
 
 function MainPage() {
 
-    const {countState, inc} = useCounts();
-
-    console.log(countState);
+    const {countState, inc} = useCount()
 
     const handleClick = useCallback(() => {
         inc()

@@ -23,7 +23,7 @@ const countSlice = createSlice({
             console.log(state, action)
 
             return {num: state.num - 1}
-        },
+        }
     }
 })
 

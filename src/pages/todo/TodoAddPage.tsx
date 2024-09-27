@@ -1,11 +1,15 @@
 import TodoAddComponent from "../../components/todo/TodoAddComponent.tsx";
+import CheckAuth from "../../components/common/CheckAuth.tsx";
 
 function TodoAddPage() {
     return (
         <div>
             <div>Todo Add Page</div>
 
-            <TodoAddComponent></TodoAddComponent>
+            <CheckAuth>
+                <TodoAddComponent/>
+            </CheckAuth>
+
         </div>
     );
 }

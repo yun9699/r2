@@ -1,31 +1,46 @@
 import {ChangeEvent, useRef, useState} from "react";
 import {postAdd} from "../../api/productAPI.ts";
 
+
+
 const initialState = {
     pname:'',
     pdesc: '',
     price: '',
 }
 
+interface IProduct {
+    pname: string;
+    pdesc: string;
+    price: string;
+}
+
+
 function ProductAddPage() {
 
-    const [product, setProduct] = useState({...initialState})
+    const [product] = useState<IProduct>({...initialState})
 
     const filesRef = useRef<HTMLInputElement>(null)
 
     const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
-        product[e.target.name] = e.target.value
+
+        const { name, value } = e.target;
+
+        // @ts-ignore
+        product[name] = value
     }
 
     const handleClick = () => {
         console.log(product)
 
-        const files = filesRef.current.files
+        const files = filesRef?.current?.files
 
-        const formData = new FormData()
+        const formData:FormData = new FormData()
 
-        for(let i = 0; i<files.length; i++) {
-            formData.append("files", files[i])
+        if(files) {
+            for (let i = 0; i < files.length; i++) {
+                formData.append("files", files[i])
+            }
         }
 
         formData.append("pname", product.pname)
@@ -34,7 +49,9 @@ function ProductAddPage() {
 
         postAdd(formData).then(data => {
             console.log(data)
-            filesRef.current.value = null
+            if(filesRef?.current?.files){
+                filesRef.current.value = ''
+            }
         })
 
     }

@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import Depth1Menu from "../components/common/Depth1Menu.tsx";
 
 function BasicLayout({children}: {children: React.ReactNode}) {
     return (
@@ -8,21 +9,7 @@ function BasicLayout({children}: {children: React.ReactNode}) {
                     {/* 로고 */}
                     <Link to="/" className="text-2xl font-bold text-blue-500">MyLogo</Link>
 
-                    {/* 네비게이션 */}
-                    <nav className="hidden md:flex space-x-6">
-                        <Link to="/" className="text-gray-700 hover:text-blue-500">Home</Link>
-                        <Link to="/todo" className="text-gray-700 hover:text-blue-500">Todo</Link>
-                        <Link to="/product/add" className="text-gray-700 hover:text-blue-500">Product</Link>
-                        <Link to="/contact" className="text-gray-700 hover:text-blue-500">Contact</Link>
-                    </nav>
-
-                    {/* CTA 버튼 */}
-                    <div className="hidden md:block">
-                        <a href="/signup"
-                           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
-                            Sign Up
-                        </a>
-                    </div>
+                    <Depth1Menu />
 
                     {/* 모바일 메뉴 버튼 */}
                     <div className="md:hidden">

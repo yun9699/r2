@@ -1,9 +1,11 @@
 
-export interface Member {
+
+
+export interface IMember {
     email: string;
 }
 
-export interface ISignInParam {
+export interface ISigninParam {
     username: string;
     password: string;
 }

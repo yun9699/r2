@@ -1,5 +1,5 @@
 import {useLocation, useNavigate, useParams} from "react-router-dom";
-import {ChangeEvent, ReactElement, useEffect, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import {deleteOne, getOne, putOne} from "../../api/todoAPI.ts";
 import LoadingComponent from "../common/LoadingComponent.tsx";
 import {ITodo} from "../../types/todo.ts";

@@ -21,8 +21,8 @@ const mainRouter = createBrowserRouter([
         element: <Suspense fallback={Loading}><Contact/></Suspense>
     },
     todoRouter,
-    productRouter,
     memberRouter,
+    productRouter
 ])
 
 export default mainRouter

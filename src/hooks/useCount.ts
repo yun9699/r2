@@ -1,10 +1,8 @@
-import {useDispatch} from "react-redux";
-import {useAppSelector} from "./rtk.ts";
+import {useAppDispatch, useAppSelector} from "./rtk.ts";
 import {decrement, increment} from "../slices/countSlice.ts";
 
-
-const useCounts = () => {
-    const dispatch = useDispatch();
+const useCount = () => {
+    const dispatch = useAppDispatch();
     const countState = useAppSelector(state => state.count);
 
     const inc = () => {
@@ -15,7 +13,7 @@ const useCounts = () => {
         dispatch(decrement(null))
     }
 
-    return {countState,inc,dec}
+    return {countState,inc, dec}
 }
 
-export default useCounts;
+export default useCount
